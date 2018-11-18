@@ -15,6 +15,7 @@
 					</div>
 				</div>
 			<div class="line">|</div>
+			<router-link to="/center">
 				<div class="user-infor-box">
 					<div class="top">
 						<img src="/static/images/index14.png">
@@ -23,6 +24,7 @@
 						会员中心
 					</div>
 				</div>
+			</router-link>
 			<div class="line">|</div>
 				<div class="user-infor-box">
 					<div class="top">
@@ -38,21 +40,18 @@
 			</div>
 		</div>
 		<div class="swiper">
-			<div class="block">
-			    <el-carousel trigger="click" height="150px">
-			        <el-carousel-item v-for="(n,ind) in list" :key="ind">
-			       		<img :src="n" alt=".">
-			       		<h2>{{ind}}</h2>
-			     	</el-carousel-item>
-			    </el-carousel>
-			 </div>
+			<van-swipe :autoplay="3000">
+			  <van-swipe-item v-for="(n,lindex) in list" :key="lindex">
+			  	<img :src="n" alt=".">
+			  </van-swipe-item>
+			</van-swipe>
 		</div>
 		<div class="h10"> </div>
 		<div class="title">
 			<h3>畅销热卖</h3>
 		</div>
 		<div class="hot">
-			<div class="hot-box" v-for="(h,hindex) in hot">
+			<div class="hot-box" v-for="(h,hindex) in hot" :key="hindex">
 				<div class="hot-box-top">
 					<img :src="h.imgUrl" alt=".">
 					<p>{{h.name}}</p>
@@ -62,57 +61,44 @@
 				</div>
 			</div>
 		</div>
-		<div class="h10"> </div>
+		<div class="h10"></div>
 		<div class="recommend-btn">
 			<button>新书推荐</button>
 			<button>好书推荐</button>
 		</div>
 		<div class="recommend">
-			<div class="recommend-box" v-for="(r,index) in 4">
+			<div class="recommend-box" v-for="(r,rindex) in 4" :key="rindex">
 				<img src="/static/images/index9.jpg" alt=".">
 				<h4>小窗幽记</h4>
 				<p>￥98</p>
 			</div>
 		</div>
-	<div class="h10"> </div>
+	<div class="h10"></div>
 		<div class="title">
 			<h3>经典旧书</h3>
 			<span>&gt;&gt;</span>
 		</div>
-
 		<div class="recommend">
-			<div class="recommend-box" v-for="(r,index) in 4">
+			<div class="recommend-box" v-for="(r,index) in 4" :key="index">
 				<img src="/static/images/index9.jpg" alt=".">
 				<h4>小窗幽记</h4>
 				<p>￥98</p>
 			</div>
 		</div>
-		<div class="h10"> </div>
-		<div class="tabBar">
-			<div class="tabBar-box">主页</div><span>|</span>
-			<div class="tabBar-box">会员中心</div><span>|</span>
-			<div class="tabBar-box">电脑版</div>
-		</div>
-		<div class="copyRight">
-			<p>&copy;2018  MADE BY HuXiang</p>
-			<p>版权所有：三家软件有限公司</p>
-		</div>
-		<ul class="nav">
-			<li>
-				<img src="/static/images/index13.png" class="icon-home">
-			</li>
-			<li>产品展示</li>
-			<li>会员登录</li>
-			<li>会员注册</li>
-			<li>会员中心</li>
-		</ul>
+		<div class="h10"></div>
+		<copyright></copyright>
 	</div><!-- end -->
 
 </template>
 
 <script>
+	import copyright from '../copyright.vue';
 	export default{
+		components:{
+			copyright,
+		},
 		name:'index',
+		
 		data(){
 			return{
 				list:['/static/images/index3.png','/static/images/index4.png'],
@@ -203,9 +189,7 @@
 			height: 15.5rem;
 		}
 	}
-	.title{
-		.title();
-	}
+	
 	.hot{
 		margin-top: 3rem;
 		overflow-x: auto;
@@ -294,51 +278,5 @@
 			}
 		}
 	}
-	.tabBar{
-		width: 100%;
-		height: 4rem;
-		line-height: 4rem;
-		padding: 0 10rem;
-		display: flex;
-		justify-content: space-between;
-		&-box{
-			font-size: 1.2rem;
-			color: #323232;
-		}
-		span{
-				
-				font-size: 1.7rem;
-				color: #f0f0f0;
-			}
-	}
-	.copyRight{
-		padding: 0 2rem;
-		border-top: .1rem solid #f0f0f0;
-		p{
-			color:#999999;
-			font-size: 1.2rem;
-			height: 2rem;
-			line-height: 2rem;
-			text-align: center;
-			margin-bottom: 1.2rem;
-		}
-	}
-	.nav{
-		width: 100%;
-		height: 5.6rem;
-		line-height: 5.6rem;
-		display: flex;
-		justify-content: space-around;
-		li{
-			border:.1rem solid #ebebeb;
-			flex: 1;
-			text-align: center;
-			margin-right: -.1rem;
-			font-size: 1.2rem;
-			color: #666666;
-		}
-		.icon-home{
-			margin-top: 1.2rem;
-		}
-	}
+	
 </style>

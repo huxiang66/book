@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import index from '@/components/index'
 import display from '@/components/display/display'
+import login from '@/components/login/login'
+import register from '@/components/register/register'
+import center from '@/components/center/center'
+import details from '@/components/details/details'
 
 Vue.use(Router)
 
@@ -14,29 +17,34 @@ export default new Router({
       component: index
     },
     {
+      path: '/index',
+      name: 'index',
+      component: index
+    },
+    {
       path: '/display',
       name: 'display',
       component: display
     },
     {
-      path: '/',
-      name: 'index',
-      component: index
+      path: '/register',
+      name: 'register',
+      component: register
     },
     {
-      path: '/',
-      name: 'index',
-      component: index
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
-      path: '/',
-      name: 'index',
-      component: index
+      path: '/center',
+      name: 'center',
+      component: center
     },
     {
-      path: '/test',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+      path: '/details',
+      name: 'details',
+      component: details
+    },
   ]
 })

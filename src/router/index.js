@@ -5,7 +5,7 @@ import display from '@/components/display/display'
 import login from '@/components/login/login'
 import register from '@/components/register/register'
 import center from '@/components/center/center'
-import details from '@/components/details/details'
+import introduction from '@/components/introduction/introduction'
 
 Vue.use(Router)
 
@@ -42,9 +42,9 @@ export default new Router({
       component: center
     },
     {
-      path: '/details',
-      name: 'details',
-      component: details
+      path: '/introduction',
+      name: 'introduction',
+      component: introduction
     },
   ]
 })

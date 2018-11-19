@@ -6,7 +6,7 @@
 			<span>&gt;&gt;</span>
 		</div>
 		<div class="productList" v-for="(l,index) in 3">
-			<img src="/static/images/display1.png" alt=".">
+			<img src="/static/images/index10.jpg" alt=".">
 			<p>故都风物</p>
 		</div>
 		<!-- 页码 -->

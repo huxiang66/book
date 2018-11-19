@@ -51,15 +51,19 @@
 			<h3>畅销热卖</h3>
 		</div>
 		<div class="hot">
+			
 			<div class="hot-box" v-for="(h,hindex) in hot" :key="hindex">
+				<router-link to="/introduction">
 				<div class="hot-box-top">
 					<img :src="h.imgUrl" alt=".">
 					<p>{{h.name}}</p>
 				</div>
+				</router-link>
 				<div class="hot-box-price">
 					￥{{h.price}}
 				</div>
 			</div>
+			
 		</div>
 		<div class="h10"></div>
 		<div class="recommend-btn">

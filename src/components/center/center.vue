@@ -4,16 +4,18 @@
 			<div class="memberInfor-left">
 				<img src="/static/images/member1.png" alt=".">
 				<div class="memberInfor-left-name">
-					<p>Hu xiang</p>
+					<p>Hu xiang-11/17</p>
 					<p>普通会员</p>
 				</div>	
 			</div>
 		</div>
 		<div class="h12"></div>
+		<router-link to="/mymenu">
 		<div class="myMenu">
 			<span>我的订单</span>
 			<span>&gt;&gt;</span>
 		</div>
+		</router-link>
 		<div class="goods">
 			<div class="goods-box" v-for="(g,index) in 4" :key="index">
 				<img src="" alt=".">

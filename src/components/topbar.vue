@@ -7,8 +7,11 @@
 			</div>
 		</router-link>
 		<div class="topBar-right">
+			
 			<img src="/static/images/index16.png" alt=".">
+			<router-link to="/search">
 			<p class="search">搜索</p>
+			</router-link>
 			<span>|</span>
 			<router-link to="/center">
 			<div class="center">

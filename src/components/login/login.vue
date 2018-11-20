@@ -29,7 +29,7 @@
 		</div>
 		<div class="wxlogin">
 			<p class="third">第三方登录</p>
-			<img src="/static/images/login1.png" alt=".">
+			<img src="/static/images/wx.png" alt=".">
 			<p class="wx">微信</p>
 		</div>
 	</div><!-- 结束 -->
@@ -47,8 +47,10 @@
 				username:'',
 				password:''
 			}
-		}
+		},
+	
 	}
+
 </script>
 
 <style scoped lang="less">

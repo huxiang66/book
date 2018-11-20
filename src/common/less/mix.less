@@ -50,3 +50,49 @@
 			min-height: 5.4rem;
 		}
 	}
+
+/*产品展示、列表*/
+.productList(){
+		width: 100%;
+		height: 12.4rem;
+		padding-left: 4rem;
+		border-bottom: .1rem solid #ebebeb;
+		display: flex;
+		align-items: center;
+		img{
+			height: 4.4rem;
+			margin-right: 4rem;
+		}
+		p{
+			font-size: 1.4rem;
+			color: #333333;
+		}
+	}
+
+	/*页码*/
+	.pageNum(){
+		height: 7rem;
+		width: 100%;
+		padding: 0 1.2rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		&-mid{
+			font-size: 1.2rem;
+			color: #787878;
+		}
+		&-left,&-right{
+			width: 8rem;
+			height: 3rem;
+			border:.1rem solid #f23030;
+			line-height: 3rem;
+			text-align: center;
+			border-radius: .3rem;
+			color: #f23030;
+		}
+	}
+	/*页码变暗*/
+	.disable(){
+		color: #f89797;
+		border: .1rem solid #f89797;
+	}

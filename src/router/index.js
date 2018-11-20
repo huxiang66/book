@@ -6,6 +6,9 @@ import login from '@/components/login/login'
 import register from '@/components/register/register'
 import center from '@/components/center/center'
 import introduction from '@/components/introduction/introduction'
+import search from '@/components/search/search'
+import store from '@/components/store/store'
+import mymenu from '@/components/mymenu/mymenu'
 
 Vue.use(Router)
 
@@ -13,7 +16,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
       component: index
     },
     {
@@ -45,6 +47,21 @@ export default new Router({
       path: '/introduction',
       name: 'introduction',
       component: introduction
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: search
+    },
+    {
+      path: '/store',
+      name: 'store',
+      component:store
+    },
+    {
+      path: '/mymenu',
+      name: 'mymenu',
+      component:mymenu
     },
   ]
 })

@@ -6,6 +6,7 @@
 				<div class="user-infor-left">
 					1
 				</div>
+				<router-link to="/store">
 				<div class="user-infor-box">
 					<div class="top">
 						15
@@ -14,6 +15,7 @@
 						全部商品
 					</div>
 				</div>
+				</router-link>
 			<div class="line">|</div>
 			<router-link to="/center">
 				<div class="user-infor-box">
@@ -51,7 +53,6 @@
 			<h3>畅销热卖</h3>
 		</div>
 		<div class="hot">
-			
 			<div class="hot-box" v-for="(h,hindex) in hot" :key="hindex">
 				<router-link to="/introduction">
 				<div class="hot-box-top">
@@ -63,27 +64,40 @@
 					￥{{h.price}}
 				</div>
 			</div>
-			
 		</div>
 		<div class="h10"></div>
 		<div class="recommend-btn">
-			<button>新书推荐</button>
-			<button>好书推荐</button>
+			<van-tabs type="card">
+			  <van-tab title="新书推荐">
+			  	<div class="recommend" v-for="n in 2">
+					<div class="recommend-box" v-for="(r,rindex) in 2" :key="rindex">
+						<img src="/static/images/index9.jpg" alt=".">
+						<h4>小窗幽记</h4>
+						<p>￥98</p>
+					</div>
+				</div>
+			  </van-tab>
+			  <van-tab title="好书推荐">
+			  	<div class="recommend" v-for="n in 2">
+					<div class="recommend-box" v-for="(r,rindex) in 2" :key="rindex">
+						<img src="/static/images/index10.jpg" alt=".">
+						<h4>注试试是</h4>
+						<p>￥98</p>
+					</div>
+				</div>
+			  </van-tab>
+			</van-tabs>
 		</div>
-		<div class="recommend">
-			<div class="recommend-box" v-for="(r,rindex) in 4" :key="rindex">
-				<img src="/static/images/index9.jpg" alt=".">
-				<h4>小窗幽记</h4>
-				<p>￥98</p>
-			</div>
-		</div>
+		
 	<div class="h10"></div>
 		<div class="title">
 			<h3>经典旧书</h3>
-			<span>&gt;&gt;</span>
+			<router-link to="/store">
+				<span>&gt;&gt;</span>
+			</router-link>
 		</div>
-		<div class="recommend">
-			<div class="recommend-box" v-for="(r,index) in 4" :key="index">
+		<div class="recommend" v-for="n in 2">
+			<div class="recommend-box" v-for="(r,rindex) in 2" :key="rindex">
 				<img src="/static/images/index9.jpg" alt=".">
 				<h4>小窗幽记</h4>
 				<p>￥98</p>
@@ -113,20 +127,27 @@
 					  price:114.00
 					},
 					{
+					  imgUrl:'/static/images/index5.jpg',
+					  name:'中国哲学简史',
+					  price:114.00
+					},
+					{
+					  imgUrl:'/static/images/index5.jpg',
+					  name:'中国哲学简史',
+					  price:114.00
+					},
+					{
 					  imgUrl:'/static/images/index6.jpg',
 					  name:'中国晚清史(上下卷)',
 					  price:209.00
 					},
 					{
-					  imgUrl:'/static/images/index7.jpg',
-					  name:'中国艺术精神',
-					  price:118.00
+					  imgUrl:'/static/images/index6.jpg',
+					  name:'中国晚清史(上下卷)',
+					  price:209.00
 					},
-					{
-					  imgUrl:'/static/images/index8.jpg',
-					  name:'中国神话传说',
-					  price:99.00
-					}]
+					
+					]
 			}
 		}
 	}
@@ -193,14 +214,14 @@
 			height: 15.5rem;
 		}
 	}
-	
+	/*畅销推荐*/
 	.hot{
+		width: 100%;
 		margin-top: 3rem;
-		overflow-x: auto;
+		padding-left: 0rem;
 		height: 21.4rem;
+		overflow-x: auto;
 		display: flex;
-		justify-content: space-around;
-
 		&-box{
 			flex: 0 0 13.8rem;
 			margin-right: 1rem;
@@ -233,34 +254,13 @@
 			}
 		}
 	}
-	.recommend{
-		width: 100%;
-		a{
-			color: #666666;
-			display: inline-block;
-			font-size: 1.3rem;
-			width: 9.8rem;
-			height: 3.5rem;
-			text-align: center;
-			line-height: 3.5rem;
-			&:link{
-				text-decoration:none;
-			}
-		}
-	}
-	/**/
-	a.router-link-active{
-		color: #fff;
-		background-color: #f23030;
-		border-radius: 3.5rem;
-	}
+	
 	.recommend{
 		width: 100%;
 		padding-left: 1.7rem;
-		margin-top: 5.5rem;
 		display: flex;
+		margin-top: 5rem;
 		justify-content: space-between;
-		flex-wrap: wrap;
 		&-box{
 			width: 16.6rem;
 			margin-bottom: 5rem;

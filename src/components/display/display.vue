@@ -3,10 +3,12 @@
 		<topbar></topbar>
 		<div class="title">
 			<h3>经典旧书</h3>
-			<span>&gt;&gt;</span>
+			<router-link to="/store">
+				<span>&gt;&gt;</span>
+			</router-link>
 		</div>
 		<div class="productList" v-for="(l,index) in 3">
-			<img src="/static/images/index10.jpg" alt=".">
+			<img src="/static/images/display1.png" alt=".">
 			<p>故都风物</p>
 		</div>
 		<!-- 页码 -->
@@ -56,45 +58,12 @@
 		.title();
 	}
 	.productList{
-		width: 100%;
-		height: 12.4rem;
-		padding-left: 4rem;
-		border-bottom: .1rem solid #ebebeb;
-		display: flex;
-		align-items: center;
-		img{
-			height: 4.4rem;
-			margin-right: 4rem;
-		}
-		p{
-			font-size: 1.4rem;
-			color: #333333;
-		}
+		.productList();
 	}
 	.pageNum{
-		height: 7rem;
-		width: 100%;
-		padding: 0 1.2rem;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		&-mid{
-			font-size: 1.2rem;
-			color: #787878;
-		}
-		&-left,&-right{
-			width: 8rem;
-			height: 3rem;
-			border:.1rem solid #f23030;
-			line-height: 3rem;
-			text-align: center;
-			border-radius: .3rem;
-			color: #f23030;
-		}
+		.pageNum();
 	}
 	.disable{
-		color: #f89797;
-		border: .1rem solid #f89797;
-		disabled:disabled;
+		.disable();
 	}
 </style>

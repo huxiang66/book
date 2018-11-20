@@ -67,7 +67,10 @@
 		},
 		data(){
 			return{
-
+				username:'',
+				password:'',
+				phone:'',
+				message:'',
 			}
 		}
 	}

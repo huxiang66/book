@@ -17,26 +17,26 @@
 		</div>
 		</router-link>
 		<div class="goods">
-			<div class="goods-box" v-for="(g,index) in 4" :key="index">
-				<img src="" alt=".">
-				<p>先付款</p>
-				<span class="stateNum">1</span>
+			<div class="goods-box" v-for="(n,index) in obligation" :key="index">
+				<img :src="n.img" alt=".">
+				<p>{{n.title}}</p>
+				<span class="stateNum" v-if="n.stateNum>0">{{n.stateNum}}</span>
 			</div>
 		</div>
-		<div class="myInfor" v-for="(i,index) in 6">
+		<div class="myInfor" v-for="(i,index) in infor">
 			<div class="myInfor-left">
-				<img src="/static/images/member3.png" alt=".">
-				<span>收货人信息</span>
+				<img :src="i.img" alt=".">
+				<span>{{i.classify}}</span>
 			</div>
 			<div class="myInfor-right">
 				&gt;&gt;
 			</div>
 		</div>
 		<!-- 退出登录 -->
-		<div class="myInfor exit-logon">
+		<div class="myInfor exit-logon" @click="signOut">
 			<div class="myInfor-left">
 				<img src="/static/images/member2.png" alt=".">
-				<span>退出登录</span>
+				<span >退出登录</span>
 			</div>
 		</div>
 		<copyright></copyright>
@@ -52,7 +52,60 @@
 		},
 		data(){
 			return{
+				obligation:
+					[{
+						img:'/static/images/member2.png',
+						title:'待付款',
+						stateNum:''
+					},
+					{
+						img:'/static/images/member9.png',
+						title:'待发货',
+						stateNum:1
+					},
+					{
+						img:'/static/images/member10.png',
+						title:'待收货',
+						stateNum:''
+					},
+					{
+						img:'/static/images/member11.png',
+						title:'已收货',
+						stateNum:3
+					}],
+				infor:
+					[ {
+						img:'/static/images/member3.png',
+						classify:'收货人信息'
+					},
+					{
+						img:'/static/images/member4.png',
+						classify:'我的收藏'
+					},
+					{
+						img:'/static/images/member5.png',
+						classify:'我的优惠券'
+					},
+					{
+						img:'/static/images/member6.png',
+						classify:'最新公告'
+					},	
+					{
+						img:'/static/images/member7.png',
+						classify:'个人资料'
+					},
+					{
+						img:'/static/images/member8.png',
+						classify:'修改密码'
+					}]
 
+			}
+		},
+		methods:{
+			signOut(){
+				this.$router.push({
+					path:'/login'
+				})
 			}
 		}
 	}
@@ -131,16 +184,17 @@
 		}
 		.stateNum{
 			display: inline-block;
-			width: 1.6rem;
-			height: 1.6rem;
+			width: 1.2rem;
+			height: 1.2rem;
 			text-align: center;
-			line-height: 1.6rem;
+			line-height: 1.2rem;
 			color:#ff4644;
 			border: .1rem solid #ff4644;
+			background-color: #fff;
 			border-radius: 50%;
 			position: absolute;
 			top: 0rem;
-			left: 1.3rem;
+			left: 1.8rem;
 		}
 	}
 

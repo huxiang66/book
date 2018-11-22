@@ -1,9 +1,10 @@
 <template>
 	<div>
-		<div class="menus">
+		<topbar></topbar>
+		<div class="menus" v-for="n in 3">
 			<div class="menus-title">
 				<img src="/static/images/menu1.png" alt=".">
-				<span>已出库</span>
+				<span>订单号:267527291</span>
 			</div>
 			<div class="menus-content">
 				<div class="menus-content-left">
@@ -34,23 +35,60 @@
 				</div>
 			</div>
 			<div class="menus-confirm">
-				<div class="menus-confirm-left">
-					延长收货
+				<div class="menus-confirm-left" @click="cancle">
+					取消订单
 				</div>
 				<div class="menus-confirm-right">
-					确认收货
+					立即支付
 				</div>
 			</div>
+			<div class="h5"></div>
 		</div>
+
+		<van-card
+  num="2"
+  price="2.00"
+  desc="描述信息"  
+  title="商品标题"
+/>
+
+<van-card
+  num="2"
+  tag="标签"
+  price="2.00"
+  desc="描述信息"  
+  title="商品标题"
+  origin-price="10.00"
+>
+  <div slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </div>
+</van-card>
 	</div>
 </template>
 
 <script>
+	import topbar from '../topbar'
 	export default{
 		name:'menus',
+		components:{
+			topbar,
+		},
 		data(){
 			return{
 
+			}
+		},
+		methods:{
+			cancle(){
+				this.$dialog.confirm({
+			      message: '订单取消之后不能恢复，确定要取消订单吗？'
+			    }).then(() => {
+				 console.log('是的')
+				}).catch(() => {
+				  console.log('不要')
+				});;
 			}
 		}
 	}
@@ -65,6 +103,15 @@
 			color: #6e6e6e;
 			font-size: 1.4rem;
 			line-height: 5.5rem;
+			img{
+				width: 1.6rem;
+				height: 1.6rem;
+				position:relative;
+				top: .3rem;
+			}
+			span{
+				margin-left: .6rem;
+			}
 		}
 		&-content{
 			height: 9.8rem;
@@ -146,6 +193,11 @@
 				font-size: 1.4rem;
 				color: #f23030;
 			}
+		}
+		.h5{
+			height: .5rem;
+			width: 100%;
+			background-color: #f3f3f3;
 		}
 	}
 	

@@ -9,6 +9,7 @@ import introduction from '@/components/introduction/introduction'
 import search from '@/components/search/search'
 import store from '@/components/store/store'
 import mymenu from '@/components/mymenu/mymenu'
+import shopcar from '@/components/shopcar/shopcar'
 
 Vue.use(Router)
 
@@ -62,6 +63,11 @@ export default new Router({
       path: '/mymenu',
       name: 'mymenu',
       component:mymenu
+    },
+    {
+      path: '/shopcar',
+      name: 'shopcar',
+      component:shopcar
     },
   ]
 })

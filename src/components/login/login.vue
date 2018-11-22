@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="page">
 		<topbar></topbar>
 		<div class="form">
 			<van-cell-group>
@@ -20,7 +20,7 @@
 				required
 				/>
 			</van-cell-group>
-			<van-button size="large" type="danger">登录</van-button>
+			<van-button size="large" type="danger" @click="login">登录</van-button>
 			<router-link to="/register">
 				<div class="register">
 					立即注册
@@ -48,6 +48,18 @@
 				password:''
 			}
 		},
+		methods:{
+			login(){
+				if(this.username==18949560771 && this.password==123456){
+					this.$router.push({
+						path:'/center'
+					})
+				}
+				else{
+					this.$toast('用户名或密码错误');
+				}
+			}
+		}
 	
 	}
 
@@ -58,7 +70,9 @@
 	.form{
 		.form();
 	}
-	
+	.page{
+		height: 100%;
+	}
 	.register{
 		font-size: 1.2rem;
 		text-align: right;

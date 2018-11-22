@@ -28,6 +28,7 @@
 				</div>
 			</router-link>
 			<div class="line">|</div>
+			<router-link to="/mymenu">
 				<div class="user-infor-box">
 					<div class="top">
 						<img src="/static/images/index15.png">
@@ -36,6 +37,7 @@
 						我的订单
 					</div>
 				</div>
+			</router-link>
 			</div>
 			<div class="user-pic">
 				<img src="/static/images/index2.png" alt=".">
@@ -53,8 +55,12 @@
 			<h3>畅销热卖</h3>
 		</div>
 		<div class="hot">
-			<div class="hot-box" v-for="(h,hindex) in hot" :key="hindex">
-				<router-link to="/introduction">
+			<div class="hot-box"
+			   v-for="(h,hindex) in hot"
+			  :key="hindex"
+			   @click="toDetails"
+			   >
+				<router-link :to="{path:'/introduction',query:{id:h.id}}">
 				<div class="hot-box-top">
 					<img :src="h.imgUrl" alt=".">
 					<p>{{h.name}}</p>
@@ -69,20 +75,20 @@
 		<div class="recommend-btn">
 			<van-tabs type="card">
 			  <van-tab title="新书推荐">
-			  	<div class="recommend" v-for="n in 2">
-					<div class="recommend-box" v-for="(r,rindex) in 2" :key="rindex">
-						<img src="/static/images/index9.jpg" alt=".">
-						<h4>小窗幽记</h4>
-						<p>￥98</p>
+			  	<div class="recommend">
+					<div class="recommend-box" v-for="(r,rindex) in newBooks" :key="rindex">
+						<img :src="r.imgUrl" alt=".">
+						<h4>{{r.name}}</h4>
+						<p>￥{{r.price}}</p>
 					</div>
 				</div>
 			  </van-tab>
 			  <van-tab title="好书推荐">
-			  	<div class="recommend" v-for="n in 2">
-					<div class="recommend-box" v-for="(r,rindex) in 2" :key="rindex">
-						<img src="/static/images/index10.jpg" alt=".">
-						<h4>注试试是</h4>
-						<p>￥98</p>
+			  	<div class="recommend">
+					<div class="recommend-box" v-for="(r,rindex) in wellBooks" :key="rindex">
+						<img :src="r.imgUrl" alt=".">
+						<h4>{{r.name}}</h4>
+						<p>￥{{r.price}}</p>
 					</div>
 				</div>
 			  </van-tab>
@@ -122,32 +128,109 @@
 				list:['/static/images/index3.png','/static/images/index4.png'],
 
 				hot:[{
+					  id:1,
 					  imgUrl:'/static/images/index5.jpg',
 					  name:'中国哲学简史',
-					  price:114.00
+					  price:88.00,
+					  originalPrice:109.00
 					},
 					{
-					  imgUrl:'/static/images/index5.jpg',
-					  name:'中国哲学简史',
-					  price:114.00
-					},
-					{
-					  imgUrl:'/static/images/index5.jpg',
-					  name:'中国哲学简史',
-					  price:114.00
-					},
-					{
+						id:2,
 					  imgUrl:'/static/images/index6.jpg',
 					  name:'中国晚清史(上下卷)',
-					  price:209.00
+					  price:138,
+					  originalPrice:159.00
 					},
 					{
-					  imgUrl:'/static/images/index6.jpg',
-					  name:'中国晚清史(上下卷)',
-					  price:209.00
+					  id:3,
+					  imgUrl:'/static/images/index7.jpg',
+					  name:'中国艺术精神',
+					  price:119,
+					  originalPrice:188.00
 					},
-					
+					{
+					  id:4,
+					  imgUrl:'/static/images/index8.jpg',
+					  name:'中国神话传说',
+					  price:209.00,
+					  originalPrice:249.00
+
+					},
+					],
+				newBooks:[{
+					  id:5,
+					  imgUrl:'/static/images/index9.jpg',
+					  name:'小窗幽记',
+					  price:69.00,
+					  originalPrice:99.00
+
+					},
+					{
+					  id:6,
+					  imgUrl:'/static/images/index10.jpg',
+					  name:'杨万里选集',
+					  price:59.00,
+					  originalPrice:88.00
+
+					},
+					{
+					  id:7,
+					  imgUrl:'/static/images/index11.jpg',
+					  name:'哲学概论',
+					  price:109.00,
+					  originalPrice:129.00
+
+					},
+					{
+					  id:8,
+					  imgUrl:'/static/images/index12.jpg',
+					  name:'中国文化传说',
+					  price:112.00,
+					  originalPrice:138.00
+
+					}
+					],
+				wellBooks:[{
+					  id:9,
+					  imgUrl:'/static/images/index7.jpg',
+					  name:'说文解字',
+					  price:128.00,
+					  originalPrice:158.00
+
+					},
+					{
+					  id:10,
+					  imgUrl:'/static/images/index8.jpg',
+					  name:'唐诗别载集',
+					  price:150.00,
+					  originalPrice:188.00
+
+					},
+					{
+					  id:11,
+					  imgUrl:'/static/images/index9.jpg',
+					  name:'小窗幽记',
+					  price:69.00,
+					  originalPrice:99.00
+
+					},
+					{
+					  id:12,
+					  imgUrl:'/static/images/index10.jpg',
+					  name:'杨万里选集',
+					  price:59.00,
+					  originalPrice:88.00
+
+					},
 					]
+
+			}
+		},
+		methods:{
+			toDetails(){
+				// this.$router.push({
+				// 	path:'/introduction/:id'
+				// })
 			}
 		}
 	}
@@ -257,15 +340,14 @@
 	
 	.recommend{
 		width: 100%;
-		padding-left: 1.7rem;
-		display: flex;
 		margin-top: 5rem;
-		justify-content: space-between;
 		&-box{
-			width: 16.6rem;
+			width: 40%;
 			margin-bottom: 5rem;
+			display: inline-block;
+			margin-left: 1.9rem;
 			img{
-				width: 8.8rem;
+				width: 66%;
 				height: 12rem;
 				display: block;
 				margin:0 auto;

@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="h12"></div>
-		<router-link to="/mymenu">
+		<router-link to="/account">
 		<div class="myMenu">
 			<span>我的订单</span>
 			<span>&gt;&gt;</span>
@@ -103,9 +103,17 @@
 		},
 		methods:{
 			signOut(){
-				this.$router.push({
+				 this.$dialog.confirm({
+				  title: '退出登录',
+			      message: '您要退出登录了吗？'
+			    }).then(() => {
+				 this.$router.push({
 					path:'/login'
 				})
+				}).catch(() => {
+				  return 
+				});
+				
 			}
 		}
 	}

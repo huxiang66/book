@@ -28,7 +28,7 @@
 				</div>
 			</router-link>
 			<div class="line">|</div>
-			<router-link to="/mymenu">
+			<router-link to="/account">
 				<div class="user-infor-box">
 					<div class="top">
 						<img src="/static/images/index15.png">
@@ -65,10 +65,10 @@
 					<img :src="h.imgUrl" alt=".">
 					<p>{{h.name}}</p>
 				</div>
-				</router-link>
 				<div class="hot-box-price">
 					￥{{h.price}}
 				</div>
+				</router-link>
 			</div>
 		</div>
 		<div class="h10"></div>
@@ -76,19 +76,25 @@
 			<van-tabs type="card">
 			  <van-tab title="新书推荐">
 			  	<div class="recommend">
-					<div class="recommend-box" v-for="(r,rindex) in newBooks" :key="rindex">
+					<div class="recommend-box"
+					    v-for="(r,rindex) in newBooks"
+					    :key="rindex">
+					    <router-link :to="{path:'/introduction',query:{id:r.id}}">
 						<img :src="r.imgUrl" alt=".">
 						<h4>{{r.name}}</h4>
 						<p>￥{{r.price}}</p>
+						</router-link>	
 					</div>
 				</div>
 			  </van-tab>
 			  <van-tab title="好书推荐">
 			  	<div class="recommend">
 					<div class="recommend-box" v-for="(r,rindex) in wellBooks" :key="rindex">
+						<router-link :to="{path:'/introduction',query:{id:r.id}}">
 						<img :src="r.imgUrl" alt=".">
 						<h4>{{r.name}}</h4>
 						<p>￥{{r.price}}</p>
+						</router-link>
 					</div>
 				</div>
 			  </van-tab>
@@ -102,11 +108,13 @@
 				<span>&gt;&gt;</span>
 			</router-link>
 		</div>
-		<div class="recommend" v-for="n in 2">
-			<div class="recommend-box" v-for="(r,rindex) in 2" :key="rindex">
-				<img src="/static/images/index9.jpg" alt=".">
-				<h4>小窗幽记</h4>
-				<p>￥98</p>
+		<div class="recommend">
+			<div class="recommend-box" v-for="(r,rindex) in wellBooks" :key="rindex">
+				<router-link :to="{path:'/introduction',query:{id:r.id}}">
+					<img :src="r.imgUrl" alt=".">
+					<h4>{{r.name}}</h4>
+					<p>￥{{r.price}}</p>
+				</router-link>
 			</div>
 		</div>
 		<div class="h10"></div>
@@ -345,7 +353,7 @@
 			width: 40%;
 			margin-bottom: 5rem;
 			display: inline-block;
-			margin-left: 1.9rem;
+			margin-left: 2.4rem;
 			img{
 				width: 66%;
 				height: 12rem;

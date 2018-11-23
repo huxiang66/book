@@ -1,70 +1,26 @@
 <template>
-	<div>
+	<div class="page">
 		<topbar></topbar>
-		<div class="menus" v-for="n in 3">
-			<div class="menus-title">
-				<img src="/static/images/menu1.png" alt=".">
-				<span>订单号:267527291</span>
+		<div class="menus" v-for="(n,index) in list" :key='index'>
+			<van-card
+				num=11
+				:tag="n.tag"
+				:price="n.price"
+				desc="作者"
+				:thumb="n.imgUrl"  
+				:title="n.name"
+				:origin-price="n.originalPrice"
+				>
+			<div slot="footer">
+				<van-button size="mini" @click="cancle(index)" class="btn-del">删除</van-button>
 			</div>
-			<div class="menus-content">
-				<div class="menus-content-left">
-					<img src="/static/images/index6.jpg" alt=".">
-				</div>
-				<div class="menus-content-mid">
-					<div class="menus-content-mid-name">
-						取个书名好难
-					</div>					
-					<div class="menus-content-mid-infor">
-						最畅销吧
-					</div>
-					<div class="menus-content-mid-infor">
-						是的最畅销吧
-					</div>					
-				</div>
-				<div class="menus-content-right">
-					<div class="menus-content-right-price">25.00</div>
-					<div class="menus-content-right-num">×1</div>
-				</div>
-			</div>
-			<div class="menus-totle">
-				<div class="menus-totle-num">
-					共 1 件商品
-				</div>
-				<div class="menus-totle-money">
-					<span>合计：</span><i>￥500</i>
-				</div>
-			</div>
-			<div class="menus-confirm">
-				<div class="menus-confirm-left" @click="cancle">
-					取消订单
-				</div>
-				<div class="menus-confirm-right">
-					立即支付
-				</div>
-			</div>
-			<div class="h5"></div>
+			</van-card>
 		</div>
-
-		<van-card
-  num="2"
-  price="2.00"
-  desc="描述信息"  
-  title="商品标题"
-/>
-
-<van-card
-  num="2"
-  tag="标签"
-  price="2.00"
-  desc="描述信息"  
-  title="商品标题"
-  origin-price="10.00"
->
-  <div slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
-  </div>
-</van-card>
+		<van-submit-bar
+		  :price="3050"
+		  button-text="提交订单"
+		  @submit="onSubmit"
+			/>
 	</div>
 </template>
 
@@ -77,128 +33,127 @@
 		},
 		data(){
 			return{
+				list:[
+				{
+					  id:1,
+					  imgUrl:'/static/images/index5.jpg',
+					  name:'中国哲学简史',
+					  price:88.00,
+					  originalPrice:109.00,
+					  tag:'新品'
+					},
+					{
+						id:2,
+					  imgUrl:'/static/images/index6.jpg',
+					  name:'中国晚清史(上下卷)',
+					  price:138,
+					  originalPrice:159.00,
+					  tag:'折扣'
 
+					},
+					{
+					  id:3,
+					  imgUrl:'/static/images/index7.jpg',
+					  name:'中国艺术精神',
+					  price:119,
+					  originalPrice:188.00,
+					  tag:'会员'
+					},
+					{
+						id:4,
+					  imgUrl:'/static/images/index8.jpg',
+					  name:'中国神话传说',
+					  price:209.00,
+					  originalPrice:249.00,
+					  tag:'划算'
+
+					},
+					{
+					  id:5,
+					  imgUrl:'/static/images/index9.jpg',
+					  name:'小窗幽记',
+					  price:69.00,
+					  originalPrice:99.00,
+					  tag:'5折'
+
+					},
+					{
+					  id:6,
+					  imgUrl:'/static/images/index10.jpg',
+					  name:'杨万里选集',
+					  price:59.00,
+					  originalPrice:88.00,
+					  tag:'好货'
+					},]
 			}
 		},
 		methods:{
-			cancle(){
+			cancle(index){
 				this.$dialog.confirm({
 			      message: '订单取消之后不能恢复，确定要取消订单吗？'
 			    }).then(() => {
-				 console.log('是的')
+				 this.list.splice(index,1)
 				}).catch(() => {
-				  console.log('不要')
-				});;
+				  console.log('不删')
+				});
+			},
+			onSubmit(){
+				this.$router.push({
+					path:'/account'
+				})
 			}
 		}
 	}
 </script>
 
-<style scoped lang="less">
+<style lang="less">
+	.page{
+		padding-bottom: 50px;
+	}
 	.menus{
 		width: 100%;
-		padding: 0 1.7rem 0 1.2rem;
-		&-title{
-			height: 5.5rem;
-			color: #6e6e6e;
-			font-size: 1.4rem;
-			line-height: 5.5rem;
+		margin-top: 1.5rem;
+		}
+	.van-card{
+		height: 10rem;
+		font-size: 1.4rem;
+		padding-left: 11.5rem;
+		&__thumb{
+			height: 8.8rem;
+			width: 5.4rem;
 			img{
-				width: 1.6rem;
-				height: 1.6rem;
-				position:relative;
-				top: .3rem;
-			}
-			span{
-				margin-left: .6rem;
+				width: 100%;
+				height: 100%
 			}
 		}
-		&-content{
-			height: 9.8rem;
-			background-color: #f9f9f9;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			&-left{
-				img{
-					width: 6.5rem;
-					height: 6.5rem;
-					border-radius: 1.2rem;
-				}
-			}
-			&-mid{
-				&-name{
-					font-size: 1.4rem;
-					color: #000;
-					height: 2rem;
-					line-height: 2rem;
-				}
-				&-infor{
-					font-size: 1.2rem;
-					color: #6e6e6e;
-					height: 1.8rem;
-					line-height:1.8rem;
-				}
-			}
-			&-right{
-				font-size: 1.4rem;
-				color: #000;
-				&-price{
-					margin-bottom: 1rem;
-				}
-			}
-		}
-		&-totle{
-			height: 5rem;
-			width: 100%;
-			line-height: 5rem;
-			text-align: right;
-			border-top: .1rem solid #f5f5f5;
-			border-bottom: .1rem solid #f5f5f5;
-			&-num{
-				display: inline-block;
-				font-size: 1.4rem;
-				color: #6e6e6e;
+		&__title{
+			height: 2rem;
+			font-size: 1.3rem;
+			line-height: 1.5rem;
 
-			}
-			&-money{
-				display: inline-block;
-				margin-left: 1.4rem;
-				span{
-					font-size: 1.4rem;
-					color: #6e6e6e;
-				}
-				i{
-					font-size: 1.6rem;
-					color: #f23030;
-					font-style:normal
-				}
-			}
 		}
-		&-confirm{
-			height: 5rem;
-			width: 100%;
-			text-align: right;
-			display: table;
-			padding-top: 0.75rem;
-			&-left,&-right{
-				display: inline-block;
-				width: 9rem;
-				height: 3.5rem;
-				margin-left: 1.9rem;
-				border:.1rem solid #f23030;
-				text-align: center;
-				line-height: 3.5rem;
-				border-radius: .4rem;
-				font-size: 1.4rem;
-				color: #f23030;
-			}
+		&__desc{
+			font-size: 1.1rem;
+			max-height: 2rem;
+			line-height: 2rem;
 		}
-		.h5{
-			height: .5rem;
-			width: 100%;
-			background-color: #f3f3f3;
+		&__right{
+			line-height: 2rem;
+			font-size: 1.3rem;
+		}
+		&__num{
+			font-size: 1.1rem;
 		}
 	}
 	
+	.van-button--mini{
+		color: #f23030;
+		border:1px solid #f23030;
+		width: 4.7rem;
+		height: 2rem;
+		line-height: 2rem;
+	}
+	.btn-del{
+			font-size: 1.2rem;
+		}
 </style>

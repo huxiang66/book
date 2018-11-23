@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0  user-scalable=no">
     <title>图书小店</title>
   </head>
-  <body>
+  <body onresize="font()">
     <div id="app"></div>
     <!-- built files will be auto injected -->
 
     <script>
-    	document.documentElement.style.fontSize=document.documentElement.clientWidth/350*10+'px';
+        function font(){
+          var font=document.documentElement.style.fontSize=document.documentElement.clientWidth/350*10+'px';
+          return font;
+        }
     </script>
   </body>
 </html>

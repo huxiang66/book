@@ -25,13 +25,16 @@
 						产品推荐
 					</div>
 					<div class="products">
-						<div class="products-box" v-for="(n,index) in 7">
-							<img src="/static/images/index11.jpg">
+						<div class="products-box" 
+							v-for="(n,index) in recommend"
+							@click="set"
+							>
+							<img :src="n.imgUrl">
 							<div class="products-box-name">
-								小窗幽记
+								{{n.name}}
 							</div>
 							<div class="products-box-price">
-								￥98.00
+								￥{{n.price}}
 							</div>
 						</div>
 					</div>
@@ -139,6 +142,101 @@
 					  originalPrice:249.00
 
 					},
+					{
+					  id:5,
+					  imgUrl:'/static/images/index9.jpg',
+					  name:'小窗幽记',
+					  price:69.00,
+					  originalPrice:99.00
+
+					},
+					{
+					  id:6,
+					  imgUrl:'/static/images/index10.jpg',
+					  name:'杨万里选集',
+					  price:59.00,
+					  originalPrice:88.00
+
+					},
+					{
+					  id:7,
+					  imgUrl:'/static/images/index11.jpg',
+					  name:'哲学概论',
+					  price:109.00,
+					  originalPrice:129.00
+
+					},
+					{
+					  id:8,
+					  imgUrl:'/static/images/index12.jpg',
+					  name:'中国文化传说',
+					  price:112.00,
+					  originalPrice:138.00
+
+					},
+					{
+					  id:9,
+					  imgUrl:'/static/images/index7.jpg',
+					  name:'说文解字',
+					  price:128.00,
+					  originalPrice:158.00
+
+					},
+					{
+					  id:10,
+					  imgUrl:'/static/images/index8.jpg',
+					  name:'唐诗别载集',
+					  price:150.00,
+					  originalPrice:188.00
+
+					},
+					{
+					  id:11,
+					  imgUrl:'/static/images/index9.jpg',
+					  name:'小窗幽记',
+					  price:69.00,
+					  originalPrice:99.00
+
+					},
+					{
+					  id:12,
+					  imgUrl:'/static/images/index10.jpg',
+					  name:'杨万里选集',
+					  price:59.00,
+					  originalPrice:88.00
+
+					},
+					],
+					// 产品推荐
+					recommend:[{
+					  id:10,
+					  imgUrl:'/static/images/index8.jpg',
+					  name:'唐诗别载集',
+					  price:150.00,
+					  originalPrice:188.00
+					},
+					{
+					  id:3,
+					  imgUrl:'/static/images/index7.jpg',
+					  name:'中国艺术精神',
+					  price:119,
+					  originalPrice:188.00
+					},
+					{
+						id:9,
+					  imgUrl:'/static/images/index7.jpg',
+					  name:'说文解字',
+					  price:128.00,
+					  originalPrice:158.00
+					},
+					{
+					  id:7,
+					  imgUrl:'/static/images/index11.jpg',
+					  name:'哲学概论',
+					  price:109.00,
+					  originalPrice:129.00
+
+					},
 					]
 				// shopNav:[
 				// 		{
@@ -159,6 +257,11 @@
 		methods:{
 		    onCancel(){
 		    	this.$toast.success('加入成功');
+		    },
+		    set(a){
+		    	console.log(a.currentTarget);
+		    	this.getId=2;
+
 		    }
 		}
 		

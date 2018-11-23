@@ -10,6 +10,8 @@ import search from '@/components/search/search'
 import store from '@/components/store/store'
 import mymenu from '@/components/mymenu/mymenu'
 import shopcar from '@/components/shopcar/shopcar'
+import addAddress from '@/components/addAddress/addAddress'
+import account from '@/components/account/account'
 
 Vue.use(Router)
 
@@ -69,5 +71,20 @@ export default new Router({
       name: 'shopcar',
       component:shopcar
     },
-  ]
+     {
+      path: '/addAddress',
+      name: 'addAddress',
+      component: addAddress
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: account
+    }
+  ],
+
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+}
+
 })

@@ -53,8 +53,10 @@
 		</div>
 		<div class="shopNav">
 			<div class="shopNav-left">
+			<router-link to="/index">
 				<img src="/static/images/index13.png" alt=".">
 				<p>首页</p>
+			</router-link>
 			</div>
 			<div class="shopNav-left">
 				<img src="/static/images/index17.png" alt=".">

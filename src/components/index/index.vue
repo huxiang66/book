@@ -9,7 +9,7 @@
 				<router-link to="/store">
 				<div class="user-infor-box">
 					<div class="top">
-						15
+						{{allGoods}}
 					</div>
 					<div class="bottom">
 						全部商品
@@ -40,7 +40,8 @@
 			</router-link>
 			</div>
 			<div class="user-pic">
-				<img src="/static/images/index2.png" alt=".">
+				<img src="/static/images/member1.png" alt="." v-if="userImg==null">
+				<img :src="userImg" alt="." v-else>
 			</div>
 		</div>
 		<div class="swiper">
@@ -130,9 +131,13 @@
 			copyright,
 		},
 		name:'index',
-		
+		mounted(){
+			this.userImg=window.localStorage.userImg;
+		},
 		data(){
 			return{
+				userImg:'',
+				allGoods:'15',
 				list:['/static/images/index3.png','/static/images/index4.png'],
 
 				hot:[{

@@ -2,7 +2,8 @@
 	<div class="topBar">
 		<router-link to="/index">
 			<div class="topBar-left">
-				<img src="/static/images/index2.png" alt=".">
+				<img src="/static/images/member1.png" alt="." v-if="userImg==null">
+				<img :src="userImg" v-else>
 				<span>图书小店</span>
 			</div>
 		</router-link>
@@ -27,8 +28,13 @@
 		name:'topbar',
 		data(){
 			return{
-
+				userImg:'',
 			}
+		},
+		mounted(){
+			console.log(window.localStorage)
+			this.userImg=window.localStorage.userImg;
+
 		}
 	}
 </script>

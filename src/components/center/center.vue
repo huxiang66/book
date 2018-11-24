@@ -2,20 +2,28 @@
 	<div>
 		<div class="memberInfor">
 			<div class="memberInfor-left">
-				<img src="/static/images/member1.png" alt=".">
+				<img src="/static/images/member1.png" alt="." v-if="userImg==null">
+				<img :src="userImg" alt="." v-else>
+
+				<router-link to="/login">
+				<div class="memberInfor-left-name"  v-if="username==null">
+					<p>未登录</p>
+				</div>
+				</router-link>	
 				<div class="memberInfor-left-name">
-					<p>Hu xiang-11/17</p>
-					<p>普通会员</p>
-				</div>	
+					<p>{{username}}</p>
+					<p>{{level}}</p>
+				</div>
+					
 			</div>
 		</div>
 		<div class="h12"></div>
-		<router-link to="/account">
-		<div class="myMenu">
+		<!-- <router-link to="/account"> -->
+		<div class="myMenu" @click="mymenu">
 			<span>我的订单</span>
 			<span>&gt;&gt;</span>
 		</div>
-		</router-link>
+		<!-- </router-link> -->
 		<div class="goods">
 			<div class="goods-box" v-for="(n,index) in obligation" :key="index">
 				<img :src="n.img" alt=".">
@@ -52,6 +60,9 @@
 		},
 		data(){
 			return{
+				username:'',
+				level:'',
+				userImg:'',
 				obligation:
 					[{
 						img:'/static/images/member2.png',
@@ -97,23 +108,38 @@
 					{
 						img:'/static/images/member8.png',
 						classify:'修改密码'
-					}]
+					}],
+
 
 			}
 		},
+		mounted(){
+			this.username=window.localStorage.username;
+			this.level=window.localStorage.level;
+			this.userImg=window.localStorage.userImg;
+		},
 		methods:{
 			signOut(){
-				 this.$dialog.confirm({
-				  title: '退出登录',
-			      message: '您要退出登录了吗？'
+				this.$dialog.confirm({
+				    title: '退出登录',
+			        message: '您要退出登录了吗？'
 			    }).then(() => {
-				 this.$router.push({
-					path:'/login'
-				})
+			    	window.localStorage.clear();
+				    // this.$router.go(0);
+				    location.reload()
 				}).catch(() => {
-				  return 
+				  
 				});
 				
+			},
+			mymenu(){
+				if(this.username!=null){
+					console.log(this.username)
+					this.$router.push('/account')
+				}else{
+					this.$router.push('/login')
+					
+				}
 			}
 		}
 	}

@@ -45,24 +45,31 @@
 		data(){
 			return{
 				username:'',
-				password:''
+				password:'',
+				level:'黄金会员',
+				userImg:'/static/images/index2.png'
 			}
 		},
 		methods:{
 			login(){
-				if(this.username==18949560771 && this.password==123456){
+				if(this.username=='hu' && this.password==123){
+					const storage = window.localStorage
+					storage.username=this.username;
+					storage.password=this.password;
+					storage.level = this.level;
+					storage.userImg = this.userImg;
+					console.log(storage);
 					this.$router.push({
 						path:'/center'
-					})
+					});
 				}
+
 				else{
 					this.$toast('用户名或密码错误');
 				}
 			}
 		}
-	
 	}
-
 </script>
 
 <style scoped lang="less">

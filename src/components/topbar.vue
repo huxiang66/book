@@ -32,7 +32,6 @@
 			}
 		},
 		mounted(){
-			console.log(window.localStorage)
 			this.userImg=window.localStorage.userImg;
 
 		}

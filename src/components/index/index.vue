@@ -110,7 +110,7 @@
 			</router-link>
 		</div>
 		<div class="recommend">
-			<div class="recommend-box" v-for="(r,rindex) in wellBooks" :key="rindex">
+			<div class="recommend-box" v-for="(r,rindex) in odlBooks" :key="rindex">
 				<router-link :to="{path:'/introduction',query:{id:r.id}}">
 					<img :src="r.imgUrl" alt=".">
 					<h4>{{r.name}}</h4>
@@ -140,7 +140,8 @@
 				allGoods:'15',
 				list:['/static/images/index3.png','/static/images/index4.png'],
 
-				hot:[{
+				hot:[
+					{
 					  id:1,
 					  imgUrl:'/static/images/index5.jpg',
 					  name:'中国哲学简史',
@@ -167,16 +168,15 @@
 					  name:'中国神话传说',
 					  price:209.00,
 					  originalPrice:249.00
-
 					},
 					],
-				newBooks:[{
+				newBooks:[
+					{
 					  id:5,
 					  imgUrl:'/static/images/index9.jpg',
 					  name:'小窗幽记',
 					  price:69.00,
 					  originalPrice:99.00
-
 					},
 					{
 					  id:6,
@@ -184,7 +184,6 @@
 					  name:'杨万里选集',
 					  price:59.00,
 					  originalPrice:88.00
-
 					},
 					{
 					  id:7,
@@ -192,50 +191,67 @@
 					  name:'哲学概论',
 					  price:109.00,
 					  originalPrice:129.00
-
 					},
 					{
 					  id:8,
-					  imgUrl:'/static/images/index12.jpg',
-					  name:'中国文化传说',
-					  price:112.00,
-					  originalPrice:138.00
-
-					}
+					  imgUrl:'/static/images/display1.png',
+					  name:'故都风物',
+					  price:109.00,
+					  originalPrice:129.00
+					},
 					],
-				wellBooks:[{
+				wellBooks:[
+					{
 					  id:9,
-					  imgUrl:'/static/images/index7.jpg',
-					  name:'说文解字',
-					  price:128.00,
-					  originalPrice:158.00
-
+					  imgUrl:'/static/images/display2.png',
+					  name:'梨园红雪录',
+					  price:138.00,
+					  originalPrice:159.00
 					},
 					{
 					  id:10,
-					  imgUrl:'/static/images/index8.jpg',
-					  name:'唐诗别载集',
-					  price:150.00,
-					  originalPrice:188.00
-
+					  imgUrl:'/static/images/display3.png',
+					  name:'论语新解',
+					  price:118.00,
+					  originalPrice:129.00
 					},
 					{
 					  id:11,
-					  imgUrl:'/static/images/index9.jpg',
-					  name:'小窗幽记',
-					  price:69.00,
-					  originalPrice:99.00
-
+					  imgUrl:'/static/images/display4.png',
+					  name:'启功平传',
+					  price:99.00,
+					  originalPrice:119.00
 					},
 					{
 					  id:12,
-					  imgUrl:'/static/images/index10.jpg',
-					  name:'杨万里选集',
-					  price:59.00,
-					  originalPrice:88.00
-
+					  imgUrl:'/static/images/display5.png',
+					  name:'山水有清音',
+					  price:79.00,
+					  originalPrice:99.00
 					},
-					]
+					],
+				odlBooks:[
+					{
+					  id:13,
+					  imgUrl:'/static/images/display6.png',
+					  name:'世语新说',
+					  price:88.00,
+					  originalPrice:108.00
+					},
+					{
+					  id:14,
+					  imgUrl:'/static/images/display7.png',
+					  name:'说文解字',
+					  price:99.00,
+					  originalPrice:108.00
+					},
+					{
+					  id:15,
+					  imgUrl:'/static/images/display8.png',
+					  name:'古诗源',
+					  price:66.00,
+					  originalPrice:86.00
+					},]
 
 			}
 		},

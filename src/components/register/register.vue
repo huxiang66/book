@@ -22,15 +22,8 @@
 				<van-field
 				v-model="password"
 				type="password"
-				label="密码"
-				placeholder="请输入确认密码(必填)"
-				required
-				/>
-				<van-field
-				v-model="password"
-				type="text"
-				label="姓名"
-				placeholder="请输入姓名(必填)"
+				label="重复密码"
+				placeholder="请确认密码(必填)"
 				required
 				/>
 				<van-field

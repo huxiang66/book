@@ -134,7 +134,6 @@
 			},
 			mymenu(){
 				if(this.username!=null){
-					console.log(this.username)
 					this.$router.push('/account')
 				}else{
 					this.$router.push('/login')

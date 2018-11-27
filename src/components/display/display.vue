@@ -7,13 +7,13 @@
 				<span>&gt;&gt;</span>
 			</router-link>
 		</div>
-		<div class="productList" v-for="(l,index) in 3">
-			<img src="/static/images/display1.png" alt=".">
-			<p>故都风物</p>
+		<div class="productList" v-for="(n,index) in list" @click="detail(n)">
+			<img :src="n.imgUrl" alt=".">
+			<p>{{n.name}}</p>
 		</div>
 		<!-- 页码 -->
 		<div class="pageNum">
-			<div class="pageNum-left" :class="{disable:page===1}" @click="page--">
+			<div class="pageNum-left" :class="{disable:page===1}" @click="prev">
 				上一页
 			</div>
 			<div class="pageNum-mid">
@@ -21,8 +21,10 @@
 				<span>/</span>
 				<span class="allPage">{{allPage}}</span>
 			</div>
-			<div class="pageNum-right" @click="page++" :class="{disable:page===allPage}">下一页</div>
+			<div class="pageNum-right" @click="next" :class="{disable:page===allPage}">下一页</div>
 		</div>
+		<!-- 顶部弹出层 -->
+		<van-popup v-model="show" position="top" :overlay="false">没有更多了</van-popup>
 		<copyright></copyright>
 	</div><!-- 结束 -->
 </template>
@@ -41,12 +43,43 @@
 		data(){
 			return{
 				page:1,
-				allPage:3,
-				dark:true
+				allPage:1,
+				dark:true,
+				show: false,
+				list:[{
+					  id:13,
+					  imgUrl:'/static/images/display6.png',
+					  name:'世语新说',
+					  price:88.00,
+					  originalPrice:108.00
+					},
+					{
+					  id:14,
+					  imgUrl:'/static/images/display7.png',
+					  name:'说文解字',
+					  price:99.00,
+					  originalPrice:108.00
+					},
+					{
+					  id:15,
+					  imgUrl:'/static/images/display8.png',
+					  name:'古诗源',
+					  price:66.00,
+					  originalPrice:86.00
+					},]
 			}
 		},
 		methods:{
-
+			prev(){
+				this.$toast('没有更多了');
+				
+			},
+			next(){
+				this.$toast('没有更多了');
+			},
+			detail(n){
+				this.$router.push({path:'/introduction',query:{id:n.id}})
+			}
 		}
 	}
 </script>

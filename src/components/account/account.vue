@@ -7,16 +7,14 @@
 			<p>您正在安全购物环境中，请放心购买</p>
 		</div>
 		<!-- 地址列表 -->
-		<van-address-list
-		  v-model="chosenAddressId"
-		  :list="list"
-		  @add="onAdd"
-		  @edit="onEdit"
-		/>
+		<div class="address">
+			<div class="address-name"></div>
+			<div class="address-name"></div>
+		</div>
 	<div class="h10"></div>
 	<div class="selected">精选特卖</div>
 <!-- 已选商品列表 -->
-	<div class="menus" v-for="(n,index) in booklist" :key='index'>
+	<div class="menus" v-for="(n,index) in shopCar" :key='index'>
 		<van-card
 			num=11
 			:tag="n.tag"
@@ -30,7 +28,7 @@
 			<van-button size="mini" @click="cancle(index)" class="btn-del">删除</van-button>
 		</div>
 		</van-card>
-		</div>
+	</div>
 	<div class="h10"></div>
 	<div class="totalPrice">
 		<div class="totalPrice-top">
@@ -46,8 +44,11 @@
 			<span class="totalPrice-bottom-price">￥5.00</span>
 		</div>
 	</div>
+	<div class="pay">
 		<van-button round type="danger" @click="pay" v-if="show">微信支付</van-button>
 		<van-button loading round type="danger" v-if="!show"/>
+	</div>
+		
 	</div>
 </template>
 
@@ -61,17 +62,8 @@
 		data(){
 			return {
 				show:true,
-      			chosenAddressId: '1',
-      			list: [
-			        {
-			          id: '1',
-			          name: '张三',
-			          tel: '13000000000',
-			          address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室'
-			        }
-			      ],
-			    booklist:[
-				{
+			    shopCar:[
+					{
 					  id:1,
 					  imgUrl:'/static/images/index5.jpg',
 					  name:'中国哲学简史',
@@ -95,48 +87,16 @@
 					  price:119,
 					  originalPrice:188.00,
 					  tag:'会员'
-					},
-					// {
-					// 	id:4,
-					//   imgUrl:'/static/images/index8.jpg',
-					//   name:'中国神话传说',
-					//   price:209.00,
-					//   originalPrice:249.00,
-					//   tag:'划算'
-
-					// },
-					// {
-					//   id:5,
-					//   imgUrl:'/static/images/index9.jpg',
-					//   name:'小窗幽记',
-					//   price:69.00,
-					//   originalPrice:99.00,
-					//   tag:'5折'
-
-					// },
-					// {
-					//   id:6,
-					//   imgUrl:'/static/images/index10.jpg',
-					//   name:'杨万里选集',
-					//   price:59.00,
-					//   originalPrice:88.00,
-					//   tag:'好货'
-					// },
-					]
-			}
-		},
+					}
+					],
+				
+				}
+			},
 		methods:{
 			pay(){
 				this.show=false
 				// this.$router.push('/')
 			},
-			onAdd() {
-		      this.$router.push('/addAddress')
-		    },
-
-		    onEdit(item, index) {
-		      console.log('修改地址')
-		    },
 		    confirm(){
 		    	this.$router.push('/pay')
 		    },
@@ -178,16 +138,17 @@
 			color: #000;
 		}
 	}
-	.van-cell{
-		background-color: #656c89;
-	}
-	.van-address-list{
-		padding: 0;
-	}
+	/*商品卡片样式*/
+	.menus{
+		width: 100%;
+		margin-top: 1.5rem;
+		}
+	/*1rem高的间隔*/
 	.h10{
 		height: 1rem;
 		background-color:#e8eaf4; 
 	}
+	/*精选特卖标题*/
 	.selected{
 		height: 3.2rem;
 		width: 100%;
@@ -229,5 +190,9 @@
 			display: flex;
 			justify-content: space-between;
 		}
+	}
+	/*支付按钮*/
+	.pay{
+		text-align: center;
 	}
 </style>

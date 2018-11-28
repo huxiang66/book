@@ -24,7 +24,7 @@
 		name:'search',
 		data(){
 			return {
-				value:''
+				value:null,
 			}
 		},
 		methods:{
@@ -34,9 +34,15 @@
 				 this.$router.go(-1);
 			},
 			popup(){
-				this.$dialog.alert({
-		      message: '输入点啥...'
-		    });
+				if(this.value!=null){
+					this.$router.push('/index')
+				}
+				else{
+					this.$dialog.alert({
+				      	message: '输入点啥...'
+				    });
+				}
+				
 			}
 		}
 	}

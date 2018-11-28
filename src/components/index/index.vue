@@ -28,8 +28,8 @@
 				</div>
 			</router-link>
 			<div class="line">|</div>
-			<router-link to="/account">
-				<div class="user-infor-box">
+			<!-- <router-link to="/account"> -->
+				<div class="user-infor-box" @click="toAccount">
 					<div class="top">
 						<img src="/static/images/index15.png">
 					</div>
@@ -37,7 +37,7 @@
 						我的订单
 					</div>
 				</div>
-			</router-link>
+			<!-- </router-link> -->
 			</div>
 			<div class="user-pic">
 				<img src="/static/images/member1.png" alt="." v-if="userImg==null">
@@ -260,6 +260,13 @@
 				// this.$router.push({
 				// 	path:'/introduction/:id'
 				// })
+			},
+			toAccount(){
+				if(window.localStorage.buyNum!=null){
+					this.$router.push('/account')
+				}else{
+					this.$toast('暂无商品');
+				}
 			}
 		}
 	}

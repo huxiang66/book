@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<!-- 个人信息头 -->
 		<div class="memberInfor">
 			<div class="memberInfor-left">
 				<img src="/static/images/member1.png" alt="." v-if="userImg==null">
@@ -18,20 +19,21 @@
 			</div>
 		</div>
 		<div class="h12"></div>
-		<!-- <router-link to="/account"> -->
+		<!-- 我的订单 -->
 		<div class="myMenu" @click="mymenu">
 			<span>我的订单</span>
 			<span>&gt;&gt;</span>
 		</div>
-		<!-- </router-link> -->
+		<!-- 待付款，待发货 -->
 		<div class="goods">
-			<div class="goods-box" v-for="(n,index) in obligation" :key="index">
+			<div class="goods-box" v-for="(n,index) in obligation" :key="index" >
 				<img :src="n.img" alt=".">
 				<p>{{n.title}}</p>
 				<span class="stateNum" v-if="n.stateNum>0">{{n.stateNum}}</span>
 			</div>
 		</div>
-		<div class="myInfor" v-for="(i,index) in infor">
+		<!-- 收货人的信息 -->
+		<div class="myInfor" v-for="(i,index) in infor"  @click="showMore">
 			<div class="myInfor-left">
 				<img :src="i.img" alt=".">
 				<span>{{i.classify}}</span>
@@ -44,7 +46,7 @@
 		<div class="myInfor exit-logon" @click="signOut">
 			<div class="myInfor-left">
 				<img src="/static/images/member2.png" alt=".">
-				<span >退出登录</span>
+				<span>退出登录</span>
 			</div>
 		</div>
 		<copyright></copyright>
@@ -133,12 +135,18 @@
 				
 			},
 			mymenu(){
+				if(window.localStorage.buyNum==null){
+					this.$toast('暂无商品');
+					return false
+				}
 				if(this.username!=null){
 					this.$router.push('/account')
 				}else{
 					this.$router.push('/login')
-					
 				}
+			},
+			showMore(e){
+				this.$toast('no more!');
 			}
 		}
 	}

@@ -66,11 +66,10 @@
 			</div>
 			<div class="shopNav-left" @click="toCar">
 				<!-- 判断是否有已选购商品跳转路由 -->
-				<!-- <router-link to="shopcar"> -->
 					<img src="/static/images/index18.png" alt=".">
 					<p>购物车</p>
-					<span class="shopNav-add-num" v-show="shopCarNum!=0">{{shopCarNum}}</span>
-				<!-- </router-link> -->
+					<span class="shopNav-add-num" v-show="shopCarNum!=0">	{{shopCarNum}}
+					</span>
 			</div>
 			<div class="shopNav-add" @click="addCar">
 				<p>加入购物车</p>
@@ -96,7 +95,7 @@
 					<van-stepper v-model="value" />
 				</div>
 				<div class="mask-wrap-bottom">
-					<van-button size="large" type="danger" @click="ok">确认</van-button>
+					<van-button size="large" type="danger" @click="ok()">确认</van-button>
 				</div>
 			</div>
 		</div>
@@ -112,13 +111,16 @@
 			topbar,
 		},
 		created(){
+			console.log(window.localStorage)
 			this.getId=this.$route.query.id;
-			this.shopCarNum=window.localStorage.buyNum
+			this.shopCarNum=window.localStorage.buyNum;
+			this.username=window.localStorage.username;
 		},
 		data(){
 			return {
 				active: 2,
 				show: false,
+				username:'',
 				getId:'',
 				maskShow:false,
 				value:1,
@@ -267,8 +269,16 @@
 			},
 		methods:{
 		    ok(){
-		    	window.localStorage.buyNum=this.value;
-		    	console.log(window.localStorage)
+		    	var storage=window.localStorage;
+		    	// var arr=[{
+		    	// 	buyNum:this.value,
+		    	// 	buyId:this.getId,
+		    	// }];
+		    	// storage.setItem('buyArr',JSON.stringify(arr))
+		    	storage.buyNum=this.value;
+		    	this.shopCarNum=storage.buyNum;
+		    	storage.getId=this.getId;
+		    	console.log(storage);
 		    	this.maskShow=false;
 		    	this.$toast.success('加入成功');
 		    },
@@ -279,22 +289,23 @@
 		    	window.location.href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=你的网址&sharesource=qzone&title=图书小店&pics=http://localhost:8080/static/images/index8.jpg&summary=你的分享描述信息"
 		    },
 		    addCar(){
-		    	if(window.localStorage.name!=null){
+		    	if(window.localStorage.username!=null){
 		    		this.maskShow=true;
 		    	}else{
 		    		this.$router.push('/login')
 		    	}
-		    	
 		    },
 		    toCar(){
-		    	if(this.shopCarNum!=0){
-		    		this.$router.push('/account')
-		    	}else{
+		    	if(this.shopCarNum!=null){
+		    		this.$router.push('/account');
+		    	}
+		    	 else if(this.username!=null){
 		    		this.$router.push('/shopcar')
+		    	}else{
+		    		this.$router.push('/login')
 		    	}
 		    }
 		}
-		
 	}
 </script>
 

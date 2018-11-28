@@ -20,7 +20,7 @@
 				</router-link>
 			</li>
 			<li class="li-border"><router-link to="/display">产品展示</router-link></li>
-			<li class="li-border"><router-link to="/login">会员登录</router-link></li>
+			<li class="li-border" @click="toLogin">会员登录</li>
 			<li class="li-border"><router-link to="/register">会员注册</router-link></li>
 			<li><router-link to="/center">会员中心</router-link></li>
 		</ul>
@@ -33,6 +33,15 @@
 		data(){
 			return{
 
+			}
+		},
+		methods:{
+			toLogin(){
+				if(window.localStorage.username!=null){
+					this.$toast('已登录');
+				}else{
+					this.$router.push('/login')
+				}
 			}
 		}
 	}
@@ -87,12 +96,16 @@
 			
 			font-size: 1.2rem;
 			color: #666666;
+			a{
+				color: #666666;
+			}
 		}
 		.icon-home{
 			margin-top: 1.2rem;
 		}
 		.li-border{
 			margin-right: -.1rem;
+				color: #666666;
 		}
 	}
 

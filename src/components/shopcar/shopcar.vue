@@ -38,6 +38,5 @@
 	.van-button--plain{
 		display: block;
 		margin:2rem auto;
-
 	}
 </style>

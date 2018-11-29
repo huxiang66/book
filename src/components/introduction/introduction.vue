@@ -41,7 +41,6 @@
 				</van-tab>
 				<van-tab title="产品参数">
 					<div class="h27"></div>
-
 					<div class="parameters">
 						<div class="parameters-top">
 							市场价 <span class="highPrice">￥{{introductions[this.getId-1].price}}</span>
@@ -66,10 +65,10 @@
 			</div>
 			<div class="shopNav-left" @click="toCar">
 				<!-- 判断是否有已选购商品跳转路由 -->
-					<img src="/static/images/index18.png" alt=".">
-					<p>购物车</p>
-					<span class="shopNav-add-num" v-show="shopCarNum!=0">	{{shopCarNum}}
-					</span>
+				<img src="/static/images/index18.png" alt=".">
+				<p>购物车</p>
+				<span class="shopNav-add-num" v-show="shopCarNum!=0">	{{shopCarNum}}
+				</span>
 			</div>
 			<div class="shopNav-add" @click="addCar">
 				<p>加入购物车</p>
@@ -111,10 +110,10 @@
 			topbar,
 		},
 		created(){
-			console.log(window.localStorage)
 			this.getId=this.$route.query.id;
-			this.shopCarNum=window.localStorage.buyNum;
-			this.username=window.localStorage.username;
+			this.username=localStorage.username;
+		    localStorage.setItem('buyArr', JSON.stringify(this.arr));
+			this.shopCarNum=localStorage.shopCarNum;
 		},
 		data(){
 			return {
@@ -125,6 +124,7 @@
 				maskShow:false,
 				value:1,
 				shopCarNum:0,
+				arr:[],
 				introductions:[
 					{
 					  id:1,
@@ -269,16 +269,22 @@
 			},
 		methods:{
 		    ok(){
-		    	var storage=window.localStorage;
-		    	// var arr=[{
-		    	// 	buyNum:this.value,
-		    	// 	buyId:this.getId,
-		    	// }];
-		    	// storage.setItem('buyArr',JSON.stringify(arr))
-		    	storage.buyNum=this.value;
-		    	this.shopCarNum=storage.buyNum;
-		    	storage.getId=this.getId;
-		    	console.log(storage);
+		    	var getArr =JSON.parse(localStorage.getItem('buyArr')) 
+		    	// console.log(buyArr)
+		    	var obj = {
+		    		buyNum:this.value,
+		    		buyId:this.getId,
+		    	}
+		    	console.log(localStorage);
+		    	console.log("getArr"+getArr);
+		    	getArr.push(obj);
+		    	
+		    	localStorage.setItem('buyArr',getArr);
+		    	localStorage.buyNum=this.value;
+		    	this.shopCarNum=parseInt(this.shopCarNum);
+		    	this.shopCarNum+=this.value;
+		    	localStorage.shopCarNum=this.shopCarNum
+		    	localStorage.getId=this.getId;
 		    	this.maskShow=false;
 		    	this.$toast.success('加入成功');
 		    },

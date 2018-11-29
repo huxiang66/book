@@ -37,7 +37,7 @@
 		},
 		methods:{
 			toLogin(){
-				if(window.localStorage.username!=null){
+				if(localStorage.username!=null){
 					this.$toast('已登录');
 				}else{
 					this.$router.push('/login')

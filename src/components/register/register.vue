@@ -20,14 +20,14 @@
 				required
 				/>
 				<van-field
-				v-model="password"
+				v-model="rePassword"
 				type="password"
 				label="重复密码"
 				placeholder="请确认密码(必填)"
 				required
 				/>
 				<van-field
-			    v-model="phone"
+			    v-model="email"
 			    label="邮箱"
 			    placeholder="请输入邮箱"
 			  />
@@ -62,7 +62,9 @@
 			return{
 				username:'',
 				password:'',
+				rePassword:'',
 				phone:'',
+				email:'',
 				message:'',
 			}
 		}

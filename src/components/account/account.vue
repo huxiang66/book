@@ -66,11 +66,9 @@
 			topbar,
 		},
 		created(){
-			const storage=window.localStorage;
-			const getId=parseInt(storage.getId);
-			this.buyNum=storage.buyNum;
+			const getId=parseInt(localStorage.getId);
+			this.buyNum=localStorage.buyNum;
 			this.showCar=this.shopCar.slice(getId-1,getId);
-			console.log(window.localStorage)
 			},
 		data(){
 			return {
@@ -206,7 +204,7 @@
 		computed:{
 			sum:{
 				get(){
-					return this.buyNum*this.showCar[0].price;
+					// return this.buyNum*this.showCar[0].price;
 				},
 				set(){
 
@@ -214,7 +212,7 @@
 			},
 			total:{
 				get(){
-					return this.buyNum*this.showCar[0].price+this.freight;
+					// return this.buyNum*this.showCar[0].price+this.freight;
 				},
 				set(){
 					

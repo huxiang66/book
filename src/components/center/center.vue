@@ -116,26 +116,31 @@
 			}
 		},
 		mounted(){
-			this.username=window.localStorage.username;
-			this.level=window.localStorage.level;
-			this.userImg=window.localStorage.userImg;
+			this.username=localStorage.username;
+			this.level=localStorage.level;
+			this.userImg=localStorage.userImg;
 		},
 		methods:{
 			signOut(){
-				this.$dialog.confirm({
+				if(localStorage.username!=null){
+					this.$dialog.confirm({
 				    title: '退出登录',
 			        message: '您要退出登录了吗？'
 			    }).then(() => {
-			    	window.localStorage.clear();
+			    	localStorage.clear();
 				    // this.$router.go(0);
 				    location.reload()
 				}).catch(() => {
 				  
 				});
+			}else{
+				this.$toast('未登录');
+			}
+				
 				
 			},
 			mymenu(){
-				if(window.localStorage.buyNum==null){
+				if(localStorage.buyNum==null){
 					this.$toast('暂无商品');
 					return false
 				}

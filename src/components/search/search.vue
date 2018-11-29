@@ -64,8 +64,8 @@
 			height: 1.7rem;
 		}
 		&-go{
-			width: 2.2rem;
-			height: 2.2rem;
+			width: 2rem;
+			height: 2rem;
 		}
 	}
 	.history{

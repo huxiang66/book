@@ -132,7 +132,7 @@
 		},
 		name:'index',
 		mounted(){
-			this.userImg=window.localStorage.userImg;
+			this.userImg=localStorage.userImg;
 		},
 		data(){
 			return{
@@ -262,7 +262,7 @@
 				// })
 			},
 			toAccount(){
-				if(window.localStorage.buyNum!=null){
+				if(localStorage.buyNum!=null){
 					this.$router.push('/account')
 				}else{
 					this.$toast('暂无商品');
